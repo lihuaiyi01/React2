@@ -1,9 +1,8 @@
-import React from "react";
-import HocPage from "./pages/HocPage";
-import FormPage from "./pages/FormPage";
-import FormPage2 from "./pages/FormPage2";
-import MyFormPage from "./pages/MyFormPage";
-import DialogPage from "./pages/DialogPage";
+import React from 'react';
+import HocPage from './pages/HocPage';
+import FormPage from './pages/FormPage';
+import FormPage2 from './pages/FormPage2';
+import MyFormPage from './pages/MyFormPage';
 
 function App() {
   return (
@@ -11,7 +10,7 @@ function App() {
       {/* 高阶组件 */}
       {/* <HocPage /> */}
 
-      {/* 表单组件 */}
+      {/* 表单组价 */}
       {/* <FormPage /> */}
 
       {/* 表单组件 使用create */}
@@ -19,9 +18,6 @@ function App() {
 
       {/* 自己实现一个create */}
       <MyFormPage />
-
-      {/*  弹窗*/}
-      {/* <DialogPage /> */}
     </div>
   );
 }
