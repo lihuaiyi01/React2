@@ -8,7 +8,10 @@ export default class MultipleContextPage extends Component {
             <div>
                 <h3>MultipleContextPage</h3>
                 <ThemeConsumer>
-                    {theme => <UserConsumer>{user => <div className={theme.themeColor}>{user.name}</div>}</UserConsumer>}
+                    {theme => 
+                        <UserConsumer>
+                            {user => <div className={theme.themeColor}>{user.name}</div>}
+                        </UserConsumer>}
                 </ThemeConsumer>
             </div>
         );
