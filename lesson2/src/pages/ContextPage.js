@@ -1,6 +1,11 @@
 import React, {Component} from "react";
 import ContextTypePage from "./ContextTypePage";
+import ConsumerPage from "./ConsumerPage";
+import MultipleContextPage from "./MultipleContextPage";
 import {ThemeProvider} from "../ThemeContext";
+import {UserProvider} from "../userContext";
+
+// 使用context步骤
 
 export default class ContextPage extends Component {
     constructor(props) {
@@ -8,16 +13,35 @@ export default class ContextPage extends Component {
         this.state = {
             theme: {
                 themeColor: "red"
+            },
+            user: {
+                name: "xiaoming"
             }
         };
     }
+    changeColor=()=>{
+        const {themeColor} = this.state.theme;
+
+        this.setState({
+            theme: {
+                themeColor: themeColor === 'red' ? "green" : "red"
+            }
+        });
+    };
     render() {
-        const {theme} = this.state
+        const {theme, user} = this.state
         return (
             <div>
+                <button onClick={this.changeColor}>change color</button>
                 <h3>ContextPage</h3>
                 <ThemeProvider value={theme}>
+                    {/* 只能订阅一个context */}
                     <ContextTypePage />
+
+                    <ConsumerPage />
+                    <UserProvider value={user}>
+                        <MultipleContextPage />
+                    </UserProvider>
                 </ThemeProvider>
             </div>
         );
