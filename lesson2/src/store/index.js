@@ -1,5 +1,5 @@
-// import {createStore} from "redux";
-import { createStore } from "../kRedux";
+import { createStore } from "redux";
+// import { createStore } from "../kRedux";
 
 // 定义修改规则
 function countReducer (state = 0, action) {
