@@ -15,13 +15,24 @@ function countReducer(state = 0, action) {
   }
 }
 
-const store = createStore(countReducer, applyMiddleware(logger));
+const store = createStore(countReducer, applyMiddleware(thunk, logger));
 
 export default store;
 
-function logger() {
+function logger({ getState, dispatch }) {
   return dispatch => action => {
     console.log(action.type + "执行了");
     return dispatch(action);
   }
+}
+
+function thunk({ getState, dispatch }) {
+  return dispatch => action => {
+    // 
+    if (typeof action === 'function') {
+      return action(dispatch, getState);
+    } else {
+      return dispatch(action);
+    }
+  };
 }
