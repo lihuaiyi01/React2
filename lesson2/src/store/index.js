@@ -1,8 +1,10 @@
-import { createStore } from "redux";
-// import { createStore } from "../kRedux";
+// import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware } from "../kRedux";
+// import thunk from "redux-thunk";
+// import logger from "redux-logger";
 
 // 定义修改规则
-function countReducer (state = 0, action) {
+function countReducer(state = 0, action) {
   switch (action.type) {
     case "ADD":
       return state + 1;
@@ -13,7 +15,13 @@ function countReducer (state = 0, action) {
   }
 }
 
-const store = createStore(countReducer);
+const store = createStore(countReducer, applyMiddleware(logger));
 
 export default store;
 
+function logger() {
+  return dispatch => action => {
+    console.log(action.type + "执行了");
+    return dispatch(action);
+  }
+}
