@@ -1,8 +1,8 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import store from "../store/";
 
 export default class ReduxPage extends Component {
-  componentDidMount() {
+  componentDidMount () {
     // 订阅
     store.subscribe(() => {
       this.forceUpdate();
@@ -10,20 +10,20 @@ export default class ReduxPage extends Component {
   }
   add = () => {
     // 派发操作
-    store.dispatch({type: "ADD"});
+    store.dispatch({ type: "ADD" });
   };
   minus = () => {
-    store.dispatch({type: "MINUS"});
+    store.dispatch({ type: "MINUS" });
   };
   asyAdd = () => {
     // 派发操作
     store.dispatch(dispatch => {
       setTimeout(() => {
-        dispatch({type: "ADD"});
+        dispatch({ type: "ADD" });
       }, 1000);
     });
   };
-  render() {
+  render () {
     console.log("store", store); //sy-log
     return (
       <div>
