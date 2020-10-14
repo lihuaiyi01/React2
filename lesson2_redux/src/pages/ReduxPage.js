@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import store from "../store/";
+import store from "../store";
 
 export default class ReduxPage extends Component {
-  componentDidMount () {
+  componentDidMount() {
     // 订阅
     store.subscribe(() => {
       this.forceUpdate();
@@ -23,7 +23,7 @@ export default class ReduxPage extends Component {
       }, 1000);
     });
   };
-  render () {
+  render() {
     console.log("store", store); //sy-log
     return (
       <div>
