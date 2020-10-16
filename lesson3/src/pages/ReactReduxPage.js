@@ -15,24 +15,33 @@ export default connect(
   //   };
   // }
 
-  // mapDispatchToProps Object
+  // mapDispatchToProps Object/Function
   // 如果不指定mapDispatchToProps， 默认props会被注入dispatch本身
   // object ，dispatch本身不会被注入props
-  {
-    add: () => ({ type: 'ADD' })
+  // {
+  //   add: () => ({ type: 'ADD' })
+  // }
+  // Function
+  (dispatch) => {
+    const res = { add: () => ({ type: 'ADD' }), minus: () => ({ type: 'MINUS' }) }
+    return {
+      dispatch
+    };
   }
-
 )(
   class ReactReduxPage extends Component {
     render() {
       console.log("props", this.props);
-      const { count, dispatch } = this.props;
+      const { count, dispatch, add } = this.props;
       return (
         <div>
           <h3>ReactReduxPage</h3>
           <p>{count}</p>
           <button onClick={() => dispatch({ type: 'ADD' })}>
             add use dispatch
+          </button>
+          <button onClick={add}>
+            add
           </button>
         </div>
       );
