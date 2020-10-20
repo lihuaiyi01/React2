@@ -22,7 +22,6 @@ export const connect = (
       // 订阅
       subscribe(() => {
         this.update();
-        console.log("1");
       });
     }
 
