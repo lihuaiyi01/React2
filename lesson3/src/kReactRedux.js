@@ -16,10 +16,12 @@ export const connect = (
       };
     }
     componentDidMount() {
-      const { dispatch } = this.context;
+      const { getState, dispatch } = this.context;
+      let stateProps = mapstateToProps(getState());
       let dispatchProps = { dispatch };
       this.setState({
         props: {
+          ...stateProps,
           ...dispatchProps
         }
       })
