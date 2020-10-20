@@ -16,7 +16,17 @@ export const connect = (
       };
     }
     componentDidMount() {
-      const { getState, dispatch } = this.context;
+      const { subscribe } = this.context;
+      this.update();
+      // 订阅
+      subscribe(() => {
+        this.update();
+      });
+    }
+
+    update = () => {
+      const { getState, dispatch, subscribe } = this.context;
+      // getStateh获取当前store的state
       let stateProps = mapstateToProps(getState());
       let dispatchProps = { dispatch };
       this.setState({
