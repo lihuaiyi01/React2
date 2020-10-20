@@ -40,9 +40,9 @@ export default connect(
     };
   },
   // mergeProps
-  (stateProps, dispatchProps, ownProps) => {
-    return { omg: "omg", ...stateProps, ...dispatchProps, ...ownProps };
-  }
+  // (stateProps, dispatchProps, ownProps) => {
+  //   return { omg: "omg", ...stateProps, ...dispatchProps, ...ownProps };
+  // }
 )(
   class ReactReduxPage extends Component {
     render() {

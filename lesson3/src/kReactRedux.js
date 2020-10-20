@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import store from './store/index';
+
 const ValueContext = React.createContext();
 
 export const connect = (
@@ -28,13 +28,22 @@ export const connect = (
       const { getState, dispatch, subscribe } = this.context;
       // getStateh获取当前store的state
       let stateProps = mapstateToProps(getState());
-      let dispatchProps = { dispatch };
+      let dispatchProps;
+      // mapDispatchToProps Object/Function
+      if (typeof mapDispatchToProps === 'object') {
+
+      } else if (typeof mapDispatchToProps === 'function') {
+
+      } else {
+        // 默认
+        dispatchProps = { dispatch };
+      }
       this.setState({
         props: {
           ...stateProps,
           ...dispatchProps
         }
-      })
+      });
     }
     render() {
       console.log("this.context", this.context);
