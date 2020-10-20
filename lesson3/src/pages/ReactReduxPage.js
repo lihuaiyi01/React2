@@ -22,7 +22,7 @@ export default connect(
   // 如果不指定mapDispatchToProps， 默认props会被注入dispatch本身
   // object ，dispatch本身不会被注入props
   // {
-  //   add: () => ({ type: 'ADD' })
+  // add: () => ({ type: 'ADD' })
   // }
   // Function(dispatch, [ownProps])
   // ！ownProps谨慎使用，如果ownProps发生变化的话，mapStateToProps会被重新执行，
@@ -30,15 +30,15 @@ export default connect(
   (dispatch, ownProps) => {
     console.log("ownProps", ownProps);
     let res = {
-      add: () => ({ type: 'ADD' }),
-      minus: () => ({ type: 'MINUS' })
+      add: () => ({ type: "ADD" }),
+      minus: () => ({ type: "MINUS" })
     };
     res = bindActionCreators(res, dispatch);
     return {
       dispatch,
       ...res
     };
-  },
+  }
   // mergeProps
   // (stateProps, dispatchProps, ownProps) => {
   //   return { omg: "omg", ...stateProps, ...dispatchProps, ...ownProps };
@@ -52,7 +52,7 @@ export default connect(
         <div>
           <h3>ReactReduxPage</h3>
           <p>{count}</p>
-          <button onClick={() => dispatch({ type: 'ADD' })}>
+          <button onClick={() => dispatch({ type: "ADD" })}>
             add use dispatch
           </button>
           <button onClick={add}>add</button>

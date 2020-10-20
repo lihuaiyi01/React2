@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+// import {bindActionCreators} from "redux";
 
 const ValueContext = React.createContext();
 
 export const connect = (
-  mapstateToProps,
+  mapStateToProps = state => state,
   mapDispatchToProps
 ) => WrappedComponent => {
   return class extends Component {
@@ -26,14 +27,14 @@ export const connect = (
 
     update = () => {
       const { getState, dispatch, subscribe } = this.context;
-      // getStateh获取当前store的state
-      let stateProps = mapstateToProps(getState());
+      //  getState获取当前store的state
+      let stateProps = mapStateToProps(getState());
       let dispatchProps;
       // mapDispatchToProps Object/Function
-      if (typeof mapDispatchToProps === 'object') {
-
-      } else if (typeof mapDispatchToProps === 'function') {
-
+      if (typeof mapDispatchToProps === "object") {
+        dispatchProps = bindActionCreators(mapDispatchToProps, dispatch);
+      } else if (typeof mapDispatchToProps === "function") {
+        dispatchProps = mapDispatchToProps(dispatch, this.props);
       } else {
         // 默认
         dispatchProps = { dispatch };
@@ -44,7 +45,7 @@ export const connect = (
           ...dispatchProps
         }
       });
-    }
+    };
     render() {
       console.log("this.context", this.context);
       return <WrappedComponent {...this.state.props} />;
@@ -60,4 +61,19 @@ export class Provider extends Component {
       </ValueContext.Provider>
     );
   }
+}
+
+function bindActionCreator(creator, dispatch) {
+  return (...args) => dispatch(creator(...args));
+}
+
+// {
+//     add: () => ({type: "ADD"})
+//   }
+export function bindActionCreators(creators, dispatch) {
+  const obj = {};
+  for (const key in creators) {
+    obj[key] = bindActionCreator(creators[key], dispatch);
+  }
+  return obj;
 }

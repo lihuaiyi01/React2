@@ -5,9 +5,9 @@ function App() {
   const [num, setNum] = useState(0);
   return (
     <div className="App">
-      <button>change num</button>
+      {/* <button onClick={() => setNum(num + 1)}>change num {num}</button> */}
       {/* react redux学习 */}
-      <ReactReduxPage num="num" />
+      {/* <ReactReduxPage num="num" /> */}
     </div>
   );
 }
