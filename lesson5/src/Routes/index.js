@@ -6,8 +6,10 @@ import {
 
 export default function Routes(props) {
   return (
-    <div>
-      <h3>Routes</h3>
-    </div>
+    <Router>
+      <Switch>
+        <Route />
+      </Switch>
+    </Router>
   );
 }
