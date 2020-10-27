@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import './static/js/flexible';
+import './static/style/iconfont/iconfont.css';
 
-ReactDOM.render(<React.StrictMode> <App /> </React.StrictMode>, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // function与函数名之间有个*
 // yield只能使用在generator中，在别的地方用会报错
